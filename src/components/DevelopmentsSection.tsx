@@ -1,13 +1,16 @@
 import ProjectCard from "./ProjectCard";
-import AdSpace from "./AdSpace";
 
 interface Project {
+  id: string;
   name: string;
   description: string;
+  descriptionLong: string;
   status: "Beta" | "Coming Soon";
   logo: string;
   users: number;
   likes: number;
+  websiteUrl: string;
+  appraisalValue: number;
 }
 
 interface DevelopmentsSectionProps {
@@ -28,8 +31,8 @@ const DevelopmentsSection = ({ title, subtitle, projects }: DevelopmentsSectionP
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
+          {projects.map((project) => (
+            <ProjectCard key={project.id} {...project} />
           ))}
         </div>
       </div>
