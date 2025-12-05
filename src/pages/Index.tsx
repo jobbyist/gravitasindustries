@@ -14,12 +14,16 @@ const Index = () => {
 
   // Transform database projects to match component format
   const transformedProjects = projects.map((p) => ({
+    id: p.id,
     name: p.name,
     description: p.description,
+    descriptionLong: p.description_long || p.description,
     status: p.status === "coming_soon" ? ("Coming Soon" as const) : ("Beta" as const),
     logo: p.logo_url || "",
     users: p.users_count,
     likes: p.likes_count,
+    websiteUrl: p.website_url || "",
+    appraisalValue: p.appraisal_value || 0,
   }));
 
   const ongoingProjects = transformedProjects.filter((p) => p.status === "Beta");

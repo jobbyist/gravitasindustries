@@ -14,11 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      bids: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          message: string | null
+          project_id: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          message?: string | null
+          project_id: string
+          status?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          message?: string | null
+          project_id?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bids_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projects: {
         Row: {
+          appraisal_value: number | null
           created_at: string
           created_by: string | null
           description: string
+          description_long: string | null
           id: string
           likes_count: number | null
           logo_url: string | null
@@ -26,11 +66,14 @@ export type Database = {
           status: string
           updated_at: string
           users_count: number | null
+          website_url: string | null
         }
         Insert: {
+          appraisal_value?: number | null
           created_at?: string
           created_by?: string | null
           description: string
+          description_long?: string | null
           id?: string
           likes_count?: number | null
           logo_url?: string | null
@@ -38,11 +81,14 @@ export type Database = {
           status?: string
           updated_at?: string
           users_count?: number | null
+          website_url?: string | null
         }
         Update: {
+          appraisal_value?: number | null
           created_at?: string
           created_by?: string | null
           description?: string
+          description_long?: string | null
           id?: string
           likes_count?: number | null
           logo_url?: string | null
@@ -50,6 +96,7 @@ export type Database = {
           status?: string
           updated_at?: string
           users_count?: number | null
+          website_url?: string | null
         }
         Relationships: []
       }

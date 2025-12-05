@@ -5,10 +5,13 @@ export interface Project {
   id: string;
   name: string;
   description: string;
+  description_long: string | null;
   status: string;
   logo_url: string | null;
   users_count: number;
   likes_count: number;
+  website_url: string | null;
+  appraisal_value: number | null;
   created_at: string;
 }
 
